@@ -1,0 +1,548 @@
+/*Import*/
+
+@import url('https://shuutoka.github.io/Chouquette-Glass/cg2/font.css'); /*font*/
+@import url('https://shuutoka.github.io/Chouquette-Glass/cg2/animations/animations.css'); /*import and load animations*/
+
+
+:root {
+    --background-image: url(https://cdn.discordapp.com/attachments/909430333806608385/918433660426924102/94628242_p0.png);; /*Changes the background image*/
+    --background-image-Minsk: url('https://ac2-o.namu.la/20210311/fdeaf21af1a8c94cf65995fa560394e605261bf1af72c8c9daaa24acee141fe4.jpg?type=orig');;
+    --background-image-Mikasa: url('https://wallpapercave.com/uwp/uwp423127.jpeg');;
+    --background-image-Ibuki: url('https://i.imgur.com/wPsgn7Y.jpeg');
+    --bg-blur: 0px; /*Amount of blur on the background*/
+    --bg-opacity: 80%; /*background value of the opacity*/
+    --mention-rgb: 135,15,255;/*mention alerte color in R G B value*/
+    --message-padding-side: 5px; /*message padding*/
+    --message-padding-top: 1px;
+    --scrollbar-color: 255,255,255; /*RGB values*/
+    --scrollbar-opacity: 0.15; /*opacity of the scroll bar "bus" 0 -> 1*/
+    --scrollbar-opacity-hover: 0.4;/*opacity of the scroll bar "bus" on hover 0 -> 1*/
+    --popout-color: rgba(0,0,0,0.55);
+    --popout-blur: 8px; /*blur of the popup's result search bar*/
+    --popout-header-opacity: 0.3;
+    --popout-header-shadow: 0px 3px 9px 0px rgba(0,0,0,0.25); /* popup result search bar shadow*/
+    --popout-radius: 12px; /*radus of the pop up of the result from the search bar*/
+    --popout-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+    --color-transparency: #0ebfff18; /*general dark color*/
+    --color-light: rgba(70, 133, 187, 0.623);
+    --color-secondary: #0ebfff59;
+    --color-white: rgba(255, 255, 255, 0.096);
+    --card-radius: 8px /*thread smoothness*/
+  
+}
+ /*-----MAIN TRANSPARENCY FOR THE APP-----*/
+
+/*IMAGE PARAMETERS*/
+#app-mount::before {
+    content: ""; /*void content*/
+    background: var(--background-image-Minsk);/*custom background*/
+    background-position: center; /*position of the background*/
+    background-size: cover; /*size of the background, i recommand "cover" */
+    position: absolute; /*position of the image*/
+    top: 0; /*position value*/
+    left: 0;/*position value*/
+    height: 100%; /*position value*/
+    width: 100%;/*position value*/
+    filter: blur(var(--bg-blur)); /*blur filter, the defalut value is in "root" and is set to "0"*/
+    opacity: var(--bg-opacity); /*opacity value is in "root", default is set to "80%"*/
+}
+/*Transparent panels*/
+.container-1NXEtd, .sidebar-1tnWFu, .panels-3wFtMD, .chat-2ZfjoI, .messages-3amgkR {
+  background-color: transparent; /* main space of discord, don't delete this line*/
+}
+.appMount-2yBXZl, body {
+    background-color: var(--bg-main-panels);
+}
+.app-2CXKsg { /*Discord Background*/
+    background-color: var(--bg-main-panels);
+}
+
+.layers-OrUESM {
+  background-color: rgba(0, 0, 0, 0.527); /*you CAN delete this one if you want or change the color of the filter, if it's ugly it's your fault*/
+}
+
+.guildSeparator-33mFX6, .scroller-3X7KbA, .wrapper-1_HaEi { /*remove standard background*/
+  background: none;
+}
+.standardSidebarView-E9Pc3j, /*don't delete this */
+.sidebarRegionScroller-FXiQOh, /* this modify the side bar you can delet/change it if you want*/
+.contentRegion-3HkfJJ,/*this is for the main region, you can delet/modify it but it can look strange*/
+.bg-1QIAus, /*this is the background, if you delete it, you will get a true black background*/
+.theme-dark .layer-86YKbF, /*parameter for dark mode*/
+.contentRegionScroller-2_GT_N, /*I don't remember what is the purpose fo this line xD*/
+.scroller-3_YDR2 { /*scroller zone is set to transparent, you can modify is by a RGB or Hexa value if you want*/
+  background-color: transparent;/*remove the standard background*/
+
+}
+.container-ZMc96U.themed-Hp1KC_ {
+    background: transparent; /*make the header, channel description, transparent*/
+}
+.children-3xh0VB:after { /*fade effect in the description*/
+    display: none; /*geting a ride of the fade effect because this doesn't match with the theme plus ugly*/
+}
+
+
+.content-1jQy2l::before {
+  display: none; /*get ride of the weird bar at the top*/
+}
+
+/*Friends list and MP channels pannel*/
+.privateChannels-oVe7HL, .scroller-WSmht3, .theme-dark .container-2cd8Mz,
+.nowPlayingColumn-1eCBCN, .scroller-2XLwLg, .scroller-1TOeMq, .applicationStore-2nk7Lo,
+.scroller-29cQFV, .container-1oAagU, .theme-dark .inset-SbsSFp, .section-3G9aLW, .header-JUTO-g, .titleContainer-3fPic2 {
+  background: none;  /* remove the legacy background of the friends pannels*/
+}
+.wrapper-2RrXDg {
+  background-color: rgba(0, 0, 0, .23);
+} /* online friend's activity card, you can edit it */
+
+.theme-dark .form-3gdLxP:before {
+  display:none; /*fix a visual bug caused to the legacy fade between your activity and hte feed in the bottom left */
+}
+/*friend search bar*/
+.searchBar-2aylmZ {
+  background-color: var(--color-white); /*search bar color*/
+  border-radius: 17px; /*border radius of the search bar*/
+  transition: .4s; /*transition time with the hover mode is secondes*/
+}
+.searchBar-2aylmZ:hover {
+ background-color: rgba(255, 255, 255, 0.171);/*color of the hover search bar*/
+  transition: .4; /*transition time of the hover search bar*/
+}
+/*button over the search bar in friend tab*/
+.container-ZMc96U .topPill-3DJJNV .item-3XjbnG.themed-2-lozF:hover {
+  background-color: var(--color-transparency);
+  color: rgba(255, 255, 255, .7);
+  transition: .4s;
+} /*hover button color over the search bar*/
+.container-ZMc96U .topPill-3DJJNV .item-3XjbnG.themed-2-lozF {
+transition: .4s; /*transition when unhover*/
+}
+.container-ZMc96U .topPill-3DJJNV .item-3XjbnG.themed-2-lozF.selected-g-kMVV {
+  background-color: var(--color-light);
+} /*button color over the search bar*/
+
+.searchBar-3TnChZ .searchBarComponent-3N7dCG{ /*color of the quickswitcher bar*/
+ font-size: 13px; /*reduce the font size to avoid bug in some language*/
+ background-color: var(--color-white);
+}
+
+.quickswitcher-pKcM9U{ /*quickswitcher menu*/
+  background-color: transparent; /*background color of the quickswitcher */
+  backdrop-filter: blur(6px); /*adding a blur effect*/
+  box-shadow: 0 0 5px #0ebeff, 0 0 8px #0ebeff, 0 0 5px #0ebeff, 0 0 5px #0ebeff, 0 0 2px #0ebeff; /*color of the shadow box*/
+} /*adding a neon as border*/
+
+.scroller-2qwVWY{
+  background-color: transparent; /*removing the color of the center in the quickswitcher menu */
+  scrollbar-color: var(--color-transparency);
+}
+
+.input-3r5zZY{/*input of the quickswitcher search menu*/
+background-color: transparent;
+}
+
+.quickswitcher-pKcM9U .scroller-2qwVWY::-webkit-scrollbar-track {
+  background-color: transparent !important; /*color of the track scrolling quickswitcher*/
+}
+
+/*---------SCROLLBAR --------- */
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--scrollbar-color), var(--scrollbar-opacity)) !important;
+ }
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--scrollbar-color), var(--scrollbar-opacity-hover)) !important;
+}
+::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece {
+  background: transparent !important;
+  border-color: transparent !important;
+} /*make invisible the "rail"*/
+
+/*------TCHAT ZONE------*/
+
+/*BIGGER MESSAGE AREA / FEED IS MORE WIDH */
+.wrapper-30-Nkg {
+  border-radius: var(--messages-radius); }
+  .wrapper-30-Nkg.cozy-VmLDNB, .wrapper-30-Nkg.compact-2Nkcau {
+    margin-left: 47px; /*larger zone for tchat*/
+
+    padding: var(--messages-padding);
+    padding-right: 8px !important;
+    border: 2px solid transparent; }
+    .wrapper-30-Nkg.cozy-VmLDNB .timestamp-p1Df1m, .wrapper-30-Nkg.cozy-VmLDNB .timestamp-p1Df1m.alt-1dvXnH, .wrapper-30-Nkg.compact-2Nkcau .timestamp-p1Df1m, .wrapper-30-Nkg.compact-2Nkcau .timestamp-p1Df1m.alt-1dvXnH {
+      color: var(--text-normal); }
+.avatar-2e8lTP { /*avatar position*/
+  top: -14px;
+  left: -49px; 
+  }
+
+.wrapper-30-Nkg.cozy-VmLDNB .timestamp-p1Df1m.alt-1dvXnH {
+  left: -65px; /*timestamp in the following messages in -65px to avoid bug this the larger zone*/
+}
+
+.messageListItem-ZZ7v6g{
+  margin-left: 19px /*mooving message to the right to avoid bug,  this reduce a little bit the text area*/
+}
+
+/*messages*/
+
+.wrapper-30-Nkg:hover { /*animation when you hover a message*/
+    background-color: var(--color-transparency) !important; /*change the color to the var set in root*/
+  border-radius: var(--popout-radius); /*change the border radius to the var set in root*/
+  transition: .4s; /*transition time when you hover a message*/
+}
+
+.wrapper-30-Nkg{
+  transition: .4s; /*transition when you hover out a message*/
+}
+
+.wrapper-30-Nkg:not(.groupStart-3Mlgv1), .wrapper-30-Nkg.compact-2Nkcau {
+  margin-top: 3px; /*give more space between message to avoid visual gitch*/
+}
+
+/*Typing zone*/
+.scrollableContainer-15eg7h {
+  background-color: transparent; /*typing zone  set to be transparent*/
+}
+.channelTextArea-1FufC0 {
+  background-color: rgba(0, 0, 0, .3); /*text bar color*/
+  border-radius: 20px; /*make the input text bar more smooth*/
+}
+
+/*UNREAD SPAN*/
+.group-spacing-16 .divider-IqmEqJ.beforeGroup-1BvJAt { /*Undread banner or "new message span"*/
+    margin-bottom: 35px; /*Higher from the new message*/
+    top: .8rem; /*lower from the old message*/
+}
+
+/*Avatar position in the feed*/
+.avatar-2e8lTP {
+    top: 2px; /*vertical postion, positive value = higher*/
+    left: -49px; /*honrizontal position, negative value =  move to left*/
+}
+
+/*Quote Response*/
+.repliedMessage-3Z6XBG:before {
+  transform: translateX(38px); /*bar of the quoted message, push it to the right to avoid colision with the user avatar*/
+}
+.repliedMessage-3Z6XBG .replyAvatar-sHd2sU,
+.repliedMessage-3Z6XBG .replyBadge-LMm_Ic {
+  margin-left: 5px; /*push the quote to the right to avoid colision with other item such as the username*/
+}
+
+.wrapper-30-Nkg.cozy-VmLDNB, .wrapper-30-Nkg.compact-2Nkcau { /*this use the var to avoid bug, aligne to the right item to avoid colision*/
+  padding: var(--message-padding-top) var(--message-padding-side);
+}
+
+.repliedMessage-3Z6XBG:before { /*Quote reply and/or with slash command */
+      top: -49%; /*move the bar/span higher to avoid colision with the quoted message*/
+    right: 100%; /*modify the length of the bar*/ 
+    left: -48px; /*modify the horizontal starting point of the bar */
+    border-top-left-radius: 20px; /*modify the angle of the bar, the smoothness  if you prefer*/
+    border-color: var(--color-light); /*this modify the color of the bar*/
+    transition: .6s;
+}
+
+.repliedMessage-3Z6XBG:hover:before { /*Quote reply and/or with slash command */
+right: 95%;
+top: -90%;
+transition: .6s;
+}
+
+
+/*THREAD*/
+.cozy-VmLDNB.hasThread-3h-KJV:after{
+  left: -29px!important; /*change the location of the thread bar in the feed*/
+  border-color: var(--color-light); /*change the color of the thread bar*/
+}
+
+.container-3i3IzO{
+  background-color: var(--color-transparency)!important; /*background color thread overview under a message in the feed*/
+  border-radius: 15px; /*change its shape*/
+}
+
+.container-3i3IzO::after{
+  background-color: var(--color-transparency)!important; /*background color thread overview under a message in the feed*/
+  border-radius: 15px; /*change its shape*/
+  backdrop-filter: blur(2px); /*add a blur filter*/
+ z-index: -999;
+}
+.container-3XgAHv{
+background-color: rgba(0, 0, 0, 0.096); /*color of the background thread chat zone*/
+backdrop-filter: blur(5px); /*blur filter for the thread zone chat */
+border: none; /*remove the border*/
+        box-shadow: /*add a neon instead of the legacy border*/
+            0 0 .2rem #fff,
+            inset 0 0 .5rem #fff, /*offset brightness of neon, or in another word, the "glowing intensity"*/
+            0 0 .9rem #08f, /*offset glowing*/
+            inset 0 0 1rem #08f;  /*glowing intensity*/
+    }
+.container-3XgAHv{
+  transition: 0.9 step-start;
+}
+.quotedChatMessage-PxNsZi{ /*readjust thee location of the quoted message in the thread window*/
+  margin-left: 18px; /*mooving to the right*/
+}
+
+
+
+/*MENTION*/
+
+
+.mention {
+    border-radius: 15px; /*mention border radius to make them more smooth */
+
+}
+
+.localBot-GrCgVt:before,
+.mentioned-Tre-dv:before {
+  display: none;  /*remove the yellow bar when you got a mention*/
+  }
+.mentioned-Tre-dv {
+    background-color: transparent!important; /*remove the orange filter in the message where you were mentionned, if you want a color you can remove the "transparent" value by a color */
+ }
+
+
+.wrapper-30-Nkg.cozy-VmLDNB, .wrapper-30-Nkg.compact-2Nkcau { /*to solve a visual bug with the animation above, the message border is smaller, doesn't affect message width*/
+    margin-left: 47px;
+    margin-right: 15px;
+}
+
+.mentioned-Tre-dv, .mouse-mode.full-motion .message-2CShn3.mentioned-Tre-dv {
+padding-bottom: 7px;
+padding-top: 4px;
+} /*give more space between the neon and the message to avoid colision*/
+
+
+/*EMBED*/
+.embedFull-1HGV2S {
+ background-color: var(--color-transparency)!important; /*change the color of the embed*/
+  backdrop-filter: blur(2px); /*add a blur filter to the embed*/
+    border-radius: 25px; /*make the embed more round to avoid colision with the neon of the mention*/
+}
+
+
+/*IMAGES*/
+
+/*remove button*/
+.removeAttachmentButton-1iO1qS{
+ opacity: 0;
+    position: sticky; /*moving the remove button under the image instead of on an another continent*/
+    top: -2px;
+    right: -20px;
+    cursor: pointer;
+    padding: 2px;
+    color: var(--interactive-normal);
+}
+
+
+/* UPLOAD FILES*/
+.upload-vLbqu- {
+    border-radius: var(--popout-radius); /*border radius of the*/
+    background-color: #00a2ff0a;
+}
+
+/*--EMOJI AND REACTION*/
+.reaction-3vwAF2 {
+  background-color: rgba(54, 77, 121, 0.349); /*change the color of an unreacted reaction */
+  border-radius: 15px; /*change the border radius of all reactions*/
+  backdrop-filter: blur(5px);
+}
+
+.reaction-3vwAF2:hover {
+   background-color: rgba(46, 161, 190, 0.336) ; /*color of a reaction on hover*/
+   }
+
+ .wrapper-2vIMkT {
+   background-color: rgba(18, 79, 128, 0.315); /*quick reaction menu/ quote, create a thread and more menu. Change the main color*/
+   backdrop-filter: blur(2px); /*add a blur filter*/
+   border-radius: 15px; /*border radius set to 15px to get a more rounded menu*/
+ }
+
+
+.button-3bklZh {
+  transition: .5s; /*animation hover out of the quick menu*/
+}
+
+ .button-3bklZh:hover {
+   background-color: var(--color-light); /*color of the menu when you hover it*/
+   transition: .5s; /*animation when you hover it */
+ }
+
+/*USERS IN GUILD PANNEL*/
+.members-3WRCEx, .container-2o3qEW, .members-3WRCEx>div {
+    background-color: rgba(31, 81, 114, 0); /*color of the members list in the guild right pannel*/
+    border-top-left-radius:var(--popout-radius) ;
+    transition: .7s;
+}
+ .container-2o3qEW:hover{
+    background-color: rgba(31, 81, 114, 0)!important; /*color of the members list in the guild right pannel*/
+    border-top-left-radius:var(--popout-radius) ;
+    backdrop-filter: blur(3px)!important;
+    left: 0px!important;
+    transition: .7s;
+    border: none; /*remove the border*/
+        box-shadow: /*add a neon instead of the legacy border*/
+            0 0 .2rem #fff,
+            inset 0 0 .1rem #fff, /*offset brightness of neon, or in another word, the "glowing intensity"*/
+            0 0 .9rem #08f, /*offset glowing*/
+            inset 0 0 .2rem #08f;  /*glowing intensity*/
+}
+
+
+
+.membersWrap-3NUR2t { /*smaller pannel for the guild members*/
+    min-width: 240px;
+    margin-right: -10px;
+    max-height: 100%;
+}
+
+/*searchbar head*/
+.searchBar-jGtisZ {
+  padding: 0 8px;
+  background-color: rgba(55, 48, 159, 0.229);
+}
+
+
+/** POP OUT **/
+
+
+/*menu pop out*/
+
+.menu-1QACrS { /*server menu*/
+    -webkit-box-shadow: var(--elevation-high); /*legacy value, keep it to prevent bug*/
+    box-shadow: var(--elevation-high); /*box shadow around the frame*/
+    background: var(--color-transparency); /*change the color */
+    border-radius: 20px; /*change the border radius*/
+}
+
+.menu-1QACrS::after{ 
+    content: '';
+    width: 100%; /*position of the pop out*/
+    height: 100%; 
+    position: absolute;
+    backdrop-filter: blur(var(--popout-blur)); /*adding a blur filter*/
+    z-index: -999;
+  border-radius: 20px; /*change the border radius*/
+}
+
+
+/*
+ *
+ *  USER POPOUT
+ *
+ */
+.userPopout-2j1gM4 {
+  max-height: 90vh;
+  background-color: var(--card-color) !important;
+  border-radius: var(--popout-radius) !important;border:display ; /*remove the border*/
+        box-shadow: /*add a neon instead of the legacy border*/
+            0 0 .2rem #fff,
+            inset 0 0 .5rem #fff, /*offset brightness of neon, or in another word, the "glowing intensity"*/
+            0 0 .9rem #08f, /*offset glowing*/
+            inset 0 0 1rem #08f;  /*glowing intensity*/
+  
+}
+
+.popoutBanner-3cqRD9, .popoutBannerPremium-3i5EEI{
+  position: relative;
+  z-index: -1;
+  transition: .7s;
+}
+
+.userPopout-2j1gM4:before {
+  position: absolute;
+  content: " ";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--color-transparency);
+  border-radius: var(--popout-radius);
+  backdrop-filter: blur(3px);
+  z-index: -1;
+  transition: .7s;
+}
+.userPopout-2j1gM4 .avatar-2Vndt_ { /*background connection statu (connected, idle etc..)*/
+  background-color: transparent;
+  border-color: transparent;
+  backdrop-filter: blur(2px);
+  transition: .7s;
+}
+.userPopout-2j1gM4 .bodyInnerWrapper-2bQs1k {
+  background-color: transparent;
+  transition: .7s;
+}
+
+.footer-3naVBw{
+  background-color: transparent;
+}
+
+/**--role user--**/
+.role-2TIOKu {
+    transform: translate(0);
+    overflow: hidden;
+
+    --transparency: .4;
+    border-radius: 13px;
+}
+.role-2TIOKu .roleRemoveIcon-387wKV {
+    margin: 0;
+    left: unset;
+    transform: translate(50%,-50%);
+}
+.role-2TIOKu .roleRemoveButton-17oXnT {
+    position: static;
+}
+.role-2TIOKu .roleCircle-3K9O3d:before {
+    content: '';
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    opacity: var(--transparency);
+}
+
+/*note zone*/
+.input-2g-os5 {
+    font-size: 16px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 5px;
+    color: var(--text-normal);
+    background-color: rgba(0, 219, 248, 0.096);
+    border: none;
+    -webkit-transition: border-color .2s ease-in-out;
+    transition: border-color .2s ease-in-out;
+}
+
+.textarea-_59yqs:focus {
+      background-color: rgba(0, 219, 248, 0.096);
+}
+/*Send DM in user pop out*/
+.input-2z42oC {
+    font-size: 14px;
+    border-radius: var(--popout-radius);
+    background-color: var(--color-transparency);
+}
+
+
+/*SERVERS FOLDER*/
+.folder-241Joy, .expandedFolderBackground-1kSAf6, .folder-241Joy:hover{
+  background-color: var(--color-light); /*change the background color of folders, opened and closed*/
+  border-radius: 15px; /*change the shape of eextended folder to avoid visual bug*/
+}
+
+/*DEFAULT ICON FOR IMAGELESS SERVERS*/
+.childWrapper-1j_1ub{
+  background-color: rgba(84, 151, 228, 0.524); /*basic color*/
+  backdrop-filter: blur (5px);
+}
+.wrapper-3kah-n.selected-1Drb7Z .childWrapper-1j_1ub, .wrapper-3kah-n:hover .childWrapper-1j_1ub{
+  background-color:rgba(0, 255, 255, 0.671)!important; /*color on hover*/
+}
